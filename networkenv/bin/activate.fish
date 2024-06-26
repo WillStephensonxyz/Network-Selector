@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/will/work/projects/networkprogram/networkselector/networkenv"
+set -gx VIRTUAL_ENV "/home/will/work/projects/netselector/proj/networkenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

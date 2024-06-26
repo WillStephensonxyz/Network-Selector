@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/will/work/projects/networkprogram/networkselector/networkenv"
+VIRTUAL_ENV="/home/will/work/projects/netselector/proj/networkenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
