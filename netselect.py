@@ -24,6 +24,14 @@ def get_security_protocol(network):
     else: 
         return "Open" 
 
+def get_encryption_protocol(network):
+    if network.cipher == const.CIPHER_TYPE_TKIP: 
+        return "TKIP" 
+    elif network.cipher == const.CIPHER_TYPE_CCMP: 
+        return "CCMP"
+    else: 
+        return "None" 
+
 @click.group()
 def cli():
     """A tool to manage Wi-Fi and Ethernet connections.""" 
@@ -35,16 +43,18 @@ def scan_wifi():
     wifi = pywifi.PyWiFi() 
     iface = wifi.interfaces()[0] 
     iface.scan() 
-    time.sleep(5)
+    time.sleep(3)
     results = iface.scan_results() 
     table = Table(title="Available Wi-Fi Networks") 
     table.add_column("SSID", style="cyan", no_wrap=True)  
     table.add_column("Signal", style="magenta") 
     table.add_column("Security", style="green") 
+    table.add_column("Encryption", style="red") 
 
     for network in results: 
         security = get_security_protocol(network)
-        table.add_row(network.ssid, str(network.signal), security)
+        encryption = get_encryption_protocol(network) 
+        table.add_row(network.ssid, str(network.signal), security, encryption)
 
     console.print(table) 
 
